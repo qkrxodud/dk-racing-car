@@ -25,7 +25,7 @@
 * assertThatNullPointerException()
 
 
-# Set Collection에 대한 학습 테스트
+## Set Collection에 대한 학습 테스트
 * 다음과 같은 Set 데이터가 주어졌을 때 요구사항을 만족해야 한다.
 
 ```java 
