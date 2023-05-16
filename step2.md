@@ -8,7 +8,7 @@ ex) git branch -D step1
 
 ```
 
-2. 통합(merge)한 next-step 저장소와 동기화하기 위해 next-step 저장소 추가(최초 한번만)
+2. 통합(merge)한 qkrxodud 저장소와 동기화하기 위해 qkrxodud 저장소 추가(최초 한번만)
 ```cvs
 git remote add {저장소_별칭} base_저장소_url
 ex) git remote add upstream https://github.com/qkrxodud/dk-racing-car.git
