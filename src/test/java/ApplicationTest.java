@@ -8,4 +8,8 @@ public class ApplicationTest {
     public void test() {
         System.out.println("test");
     }
+
+    public void commit() {
+        // test
+    }
 }
