@@ -6,6 +6,6 @@ public class ApplicationTest {
     @Test
     @DisplayName("테스트")
     public void test() {
-        System.out.println("test");
+        // commit test
     }
 }
