@@ -3,6 +3,8 @@ package level2;
 import org.junit.Rule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.rules.ExpectedException;
 
 import static org.assertj.core.api.Assertions.*;
@@ -16,12 +18,16 @@ public class StringAddCalculatorTest {
         stringAddCalculator = new StringAddCalculator();
     }
 
-    @Test
-    public void splitAndSum_null_또는_빈문자() {
-        int result = stringAddCalculator.splitAndSum(null);
+    /**
+     * <a href="https://gmlwjd9405.github.io/2019/11/27/junit5-guide-parameterized-test.html">...</a>
+     */
+    @ParameterizedTest
+    @NullAndEmptySource
+    public void splitAndSum_null_또는_빈문자(String param) {
+        int result = stringAddCalculator.splitAndSum(param);
         assertThat(result).isEqualTo(0);
 
-        result = stringAddCalculator.splitAndSum("");
+        result = stringAddCalculator.splitAndSum(param);
         assertThat(result).isEqualTo(0);
     }
 
@@ -65,3 +71,6 @@ public class StringAddCalculatorTest {
         Integer.parseInt("dddd");
     }
 }
+/**
+ * https://velog.io/@doondoony/posix-eol
+ */

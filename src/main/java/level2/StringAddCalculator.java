@@ -5,27 +5,39 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+
+    private final static String CUSTOM_REGEX = "//(.)\n(.*)";
+    private final static String REGEX = ",|:";
+    private final static int NUM_ONE = 1;
+    private final static int NUM_TWO = 2;
+
     public int splitAndSum(String text) {
         // null, empty check
         if(text == null || text.isEmpty())
             return 0;
 
-        // single num or split
-        if(text.length() == 1)
-            return Integer.parseInt(validation(text));
-        else
-            return Arrays.stream(split(text)).mapToInt(i -> {
+        return sumArray(text);
+    }
+
+    /**
+     * TODO <a href="https://dublin-java.tistory.com/47">...</a>
+     */
+    private int sumArray(String text) {
+        return Arrays
+            .stream(split(text))
+            .mapToInt(i -> {
                 return Integer.parseInt(validation(i));
-            }).sum();
+            })
+            .sum();
     }
 
     private String[] split(String text) {
         String[] tokens;
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if(m.find()) {
-            tokens = m.group(2).split(m.group(1));
+        Matcher matcher = Pattern.compile(CUSTOM_REGEX).matcher(text);
+        if(matcher.find()) {
+            tokens = matcher.group(NUM_TWO).split(matcher.group(NUM_ONE));
         } else {
-            tokens = text.split(",|:");
+            tokens = text.split(REGEX);
         }
         return tokens;
     }
