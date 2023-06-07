@@ -8,6 +8,7 @@ public class StringAddCalculator {
 
     private final static String CUSTOM_REGEX = "//(.)\n(.*)";
     private final static String REGEX = ",|:";
+    private final static Pattern PATTERN = Pattern.compile(CUSTOM_REGEX);
     private final static int NUM_ONE = 1;
     private final static int NUM_TWO = 2;
 
@@ -32,14 +33,17 @@ public class StringAddCalculator {
     }
 
     private String[] split(String text) {
-        String[] tokens;
-        Matcher matcher = Pattern.compile(CUSTOM_REGEX).matcher(text);
+        Matcher matcher = PATTERN.matcher(text);
+
         if(matcher.find()) {
-            tokens = matcher.group(NUM_TWO).split(matcher.group(NUM_ONE));
-        } else {
-            tokens = text.split(REGEX);
+            return createTokens(matcher);
         }
-        return tokens;
+
+        return text.split(REGEX);
+    }
+
+    private String[] createTokens(Matcher matcher) {
+        return matcher.group(NUM_TWO).split(matcher.group(NUM_ONE));
     }
 
     private String validation(String text) {
