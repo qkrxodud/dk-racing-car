@@ -33,14 +33,17 @@ public class StringAddCalculator {
     }
 
     private String[] split(String text) {
-        String[] tokens;
         Matcher matcher = PATTERN.matcher(text);
+
         if(matcher.find()) {
-            tokens = matcher.group(NUM_TWO).split(matcher.group(NUM_ONE));
-        } else {
-            tokens = text.split(REGEX);
+            return createTokens(matcher);
         }
-        return tokens;
+
+        return text.split(REGEX);
+    }
+
+    private String[] createTokens(Matcher matcher) {
+        return matcher.group(NUM_TWO).split(matcher.group(NUM_ONE));
     }
 
     private String validation(String text) {
